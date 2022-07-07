@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
+    <style>
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .img-div {
+            margin: auto;
+            width: 25%;
+            height: 300px;
+        }
+
+        .left-div {
+            border: 3px solid black;
+            position: relative;
+            width: 65%;
+        }
+
+        .right-div {
+            position: relative;
+            width: 30%;
+        }
+
+        .main-div {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+
+</head>
+
+<body>
+    <% let showUpdateBtn=true; %>
+        <% let showLastUpdated=false; %>
+            <%- include('header'); %>
+
+                <% if(locals.user) {%>
+                    <%- include('_introSection',{title: 'Login Page' , loggedInUser:user,
+                    org_user:user,showUpdateBtn,showLastUpdated}); %>
+                    <% showUpdateBtn=true; %>
+                    <% showLastUpdated=true; %>
+
+                    <%- include('_addToy'); %>
+                    <%- include('_searchToy',{searchList}) %>
+                    
+                    <% if(searchList.length >0) {%> 
+                            <h1>Search Results : </h1>
+                            <div id="toys-container"
+                                class="d-flex flex-row bd-highlight flex-box flex-wrap align-content-between mb-3">
+                                <% searchList.forEach(element=> { %>
+
+                                    <div class="card my-lg-3 mx-3" style="width: 18rem;">
+
+                                        <%- include('_yourToys',{element}) %>
+                                    </div>
+                                <% }) %>
+                                </div>
+                    <% } %>
+
+                    <% if(toysList.length >0) {%> 
+                    <div class="main-div">
+
+                        <div class="left-div">
+                            <h1>All Your Toys : </h1>
+                            <div id="toys-container"
+                                class="d-flex flex-row bd-highlight flex-box flex-wrap align-content-between mb-3">
+                                <% toysList.forEach(element=> { %>
+
+                                    <div class="card my-lg-3 mx-3" style="width: 18rem;">
+
+                                        <%- include('_yourToys',{element}) %>
+                                    </div>
+                                    <% }) %>
+                            </div>
+                            <% } %>
+                        </div>
+
+                        <!-- <div class="right-div">
+                            <section class="">
+                            </section>
+                        </div> -->
+
+                    </div>
+                <% } %>  
+
+                    <%- include('footer'); %>
+
+                        <!-- JavaScript Bundle with Popper -->
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+                            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+                            crossorigin="anonymous"></script>
+</body>
+
+</html>

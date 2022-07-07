@@ -1,0 +1,74 @@
+<div class="card text-center my-3" style="font-family: 'Trebuchet MS'; width: 50%; margin: auto;">
+    <h4 class="card-header"><i class="fas fa-pencil-alt prefix"></i>Add Toy</h4>
+    <section class="feed-posts">
+        <!-- <form id="post-form" action="/toys/add-toy" method="post" enctype="multipart/form-data">
+            <input class="my-3" style="width: 50%;" type="text" name="name" id="name" required
+                placeholder="Enter Toy Name">
+            <br>
+            <textarea name="content" class="my-3" id="content" cols="30" rows="10" placeholder="Type here ..."
+                required></textarea>
+                <input id="file-ip-1"  type="file" name="avatar" onchange="showPreview(event);">
+            <div class="my-3" id="preview-div">
+                <img id="file-preview">
+            </div>
+            <span id="image-preview-default-text"></span>
+            <div>
+                <button class="btn btn-primary my-3">Add</button>
+            </div>
+        </form> -->
+
+        <form id="toy-form" action="/toys/add-toy" method="post"
+        >
+            <input class="my-3" style="width: 50%;" type="text" name="name" id="name" required
+                placeholder="Enter Toy Name">
+            <br>
+            <textarea name="content" id="content" class="my-3" id="" cols="30" rows="10" placeholder="Type here ..."
+                required></textarea>
+            <br>
+            <input id="file-ip-1"  type="file" name="avatar" onchange="showPreview(event);">
+            <div class="my-3" id="preview-div">
+                <img id="file-preview">
+            </div>
+            <span id="image-preview-default-text"></span>
+            <br>
+            <div>
+                <button class="btn btn-primary my-3" type="submit">Add</button>
+            </div>
+        </form>
+        <script>
+             function showPreview(event){
+                if(event.target.files.length > 0){
+                    const file=event.target.files[0];
+                    console.log('file is ',file);
+                    const ext=file.type.split("/")[1];
+                    console.log('ext is ',ext);
+                    let src = URL.createObjectURL(event.target.files[0]);
+                    let preview = document.getElementById("file-preview");
+                    let previewDiv = document.getElementById("preview-div");
+                    let previewText= document.getElementById("image-preview-default-text");
+                    preview.src = src;
+                    if (ext === 'jpeg' || ext === 'png') {
+                        previewDiv.style.display = "block";
+                        previewText.innerHTML = "Image Preview";
+                        previewText.style.color = "black";
+                        previewText.style.display = "block";
+                        preview.style.display = "block";
+                    }
+                    else{
+                        previewDiv.style.display = null;
+                        preview.style.display = null;
+                        previewText.innerHTML = "Upload in png/jpg format only";
+                        previewText.style.color = "red";
+                        previewText.style.display = "block";
+                        // file=null;
+                    }
+                }
+                else{
+                        previewText.style.display = null;
+                        previewDiv.style.display = null;
+                        preview.style.display = null;
+                }
+            }
+        </script>
+    </section>
+</div>
