@@ -1,0 +1,10 @@
+body {
+    background-color: #e0e8e0;
+  }
+  
+  h1 {
+    font-weight: bolder;
+    color: blue;
+    text-align: center;
+    font-family: 'Trebuchet MS';
+  }

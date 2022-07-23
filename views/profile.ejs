@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <style>
+        h1 {
+            font-weight: bolder;
+            color: blue;
+            text-align: center;
+            font-family: 'Trebuchet MS';
+        }
+    
+        #image-preview-default-text{
+            display: none;
+            /* color: black; */
+        }
+
+        #file-preview {
+            height: 100%;
+            width:100%;
+            display:none;
+            margin-bottom:30px;
+        }
+
+        #preview-div{
+            position: relative;
+            /* align-self: center; */
+            display: none;
+            height: 40%;
+            width: 50%;
+            border: 2px solid red;
+            /* align-items: center; */
+            /* justify-content: center; */
+            margin: auto;
+        }
+
+        img {
+            width:100%;
+            height:100%;
+        }
+        .img-div {
+            margin: auto;
+            width:25%;
+            height:300px;
+        }
+
+    </style>
+</head>
+
+<body>
+    
+    <div class="img-div"> 
+        <img src="<%= org_user.avatar %>" class="my-2 rounded mx-auto d-block" alt="...">
+    </div>
+    
+            <% showUpdateBtn=false; %>
+                <% showLastUpdated=true; %>
+                    <%- include('_introSection',{user:org_user,showUpdateBtn,showLastUpdated,loggedInUser:logged_user}); %>
+
+                        <% if(org_user.id===logged_user.id) {%>
+                            <div class="card text-center" style="width: 50%; margin: auto;">
+                                <h5 class="card-header" style="color: blue; font-weight: bold;">
+                                    Update Here
+                                </h5>
+                                <form action="/users/update-profile/<%= logged_user.id %>" method="post"
+                                    enctype="multipart/form-data">
+                                    <input class="my-3" style="width: 40%;" type="text" name="updated_username" id="updated_username"
+                                        placeholder="Enter New Name :" value="">
+                                    <br>
+                                    <input class="my-3" style="width: 40%;" type="email" name="updated_email" id="updated_email"
+                                        placeholder="Enter New E-Mail :" value="">
+                                    <br>
+                                    <input id="file-ip-1"  type="file" name="avatar" placeholder="Profile pic" onchange="showPreview(event);">
+                                    <div class="my-3" id="preview-div">
+                                        <img id="file-preview">
+                                    </div>
+                                    <span id="image-preview-default-text"></span>
+                                    <br>
+                                    <input class="my-3" style="width: 40%;" type="password" name="password" id="password"
+                                        required placeholder="Enter Original Password :" value="">
+                                    <br>
+                                    <button class="my-3 btn btn-primary" type="submit">Save Changes</button>
+                                </form>
+                                <script>
+                                     function showPreview(event){
+                                        if(event.target.files.length > 0){
+                                            const file=event.target.files[0];
+                                            console.log('file is ',file);
+                                            const ext=file.type.split("/")[1];
+                                            console.log('ext is ',ext);
+                                            let src = URL.createObjectURL(event.target.files[0]);
+                                            let preview = document.getElementById("file-preview");
+                                            let previewDiv = document.getElementById("preview-div");
+                                            let previewText= document.getElementById("image-preview-default-text");
+                                            preview.src = src;
+                                            if (ext === 'jpeg' || ext === 'png') {
+                                                previewDiv.style.display = "block";
+                                                previewText.innerHTML = "Image Preview";
+                                                previewText.style.color = "black";
+                                                previewText.style.display = "block";
+                                                preview.style.display = "block";
+                                            }
+                                            else{
+                                                previewDiv.style.display = null;
+                                                preview.style.display = null;
+                                                previewText.innerHTML = "Upload in png/jpg format only";
+                                                previewText.style.color = "red";
+                                                previewText.style.display = "block";
+                                                // file=null;
+                                            }
+                                        }
+                                        else{
+                                                previewText.style.display = null;
+                                                previewDiv.style.display = null;
+                                                preview.style.display = null;
+                                        }
+                                    }
+                                </script>
+                            </div>
+                            <% } %>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+
+</html>

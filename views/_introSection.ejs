@@ -1,0 +1,31 @@
+<div class="card text-center my-3" style="font-family: 'Trebuchet MS'; width: 50%; margin: auto;">
+    <h1 class="card-header">
+      Welcome
+    </h1>
+    <div class="card-body">
+      <h3 class="card-title">
+          <%= user.username %>
+      </h3>
+      <h5 class="card-text">
+          <%= user.email %>
+      </h5>
+ 
+      <% if(showUpdateBtn==true) {%>
+        <% showLastUpdated=true %> 
+        <a href="/users/profile/<%= user.id %> ">
+          <button class="btn btn-primary">UPDATE</button>
+      </a>
+      <% } %> 
+      
+</div>
+<div class="card-footer text-muted">
+  <% if(showLastUpdated && showUpdateBtn)  {%>
+    Joined <%= user.createdAt.toString().slice(0,15) %>
+  <% }else if(showLastUpdated && !showUpdateBtn) {%>
+    Last Updated : <%= user.updatedAt.toString().slice(0,15) %> 
+   <% } else{%>
+    Joined <%= user.createdAt.toString().slice(0,15) %>
+    <% } %>
+         
+  </div>
+</div>

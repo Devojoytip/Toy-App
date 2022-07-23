@@ -1,0 +1,26 @@
+<% if (element.user.id===user.id || search_val===true) {%>
+    <div class="card my-lg-3 mx-3" style="width: 18rem;">
+    <div class="card-body flex-fill mb-3">
+        <h6 class="card-subtitle mb-2 text-muted">Added on <%= element.createdAt.toString().slice(0,15) %>
+        </h6>
+        <figure>
+            <img src="<%= element.image.substring(50) %>" class="card-img-top" alt="...">
+        </figure>
+        <h5 class="card-title">
+            <%= element.name %>
+        </h5>
+        <p class="card-text">
+            <%= element.content %>
+        </p>
+
+        <% if (element.user.id===user.id) {%>
+            <a href="/toys/remove-toy/<%= element.id %> ">
+                <button class="btn btn-danger">Remove Toy</button>
+            </a>
+            <a href="/toys/edit-toy/form/<%= element.id %> ">
+                <button class="btn btn-primary">Edit Toy Info</button>
+            </a>
+        <% } %>
+    </div>
+    </div>
+<% } %>
