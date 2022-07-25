@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Kleiba</a>
+<nav class="navbar navbar-expand-sm  navbar-dark navcolor">
+    <div class="container-fluid navcolor">
+        <a class="navbar-brand" href="#">
+            <span class="text">Kleiba</span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,14 +13,22 @@
                 <a href="/users/profile"><button class="btn btn-outline-success my-2 my-sm-0">Profile</button>
                 </a>
 
-                <a href="/users/logout"><button class="btn btn-outline-success my-2 my-sm-0">Logout</button></a>
+                <a href="/users/logout">
+                    <button class="btn btn-outline-success my-2 my-sm-0">Logout</button>
+                </a>
             </ul>
 
             <% }else{ %>
                 <ul>
-                    <a href="/users/login"><button class="btn btn-outline-success my-2 my-sm-0">Login</button></a>
-                    <a href="/users/sign-up"><button class="btn btn-outline-success my-2 my-sm-0">Sign
-                            Up</button></a>
+                    <a href="/users/login">
+                        <!-- <button class="btn btn-outline-success my-2 my-sm-0">Login</button> -->
+                        <button class="button-24">Login</button>
+                    </a>
+                    <a href="/users/sign-up">
+                        <!-- <button class="btn btn-outline-success my-2 my-sm-0">Sign
+                            Up</button> -->
+                        <button class="button-24">Sign Up</button>
+                    </a>
                 </ul>
                 <% } %>
     </div>

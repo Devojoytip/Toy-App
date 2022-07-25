@@ -1,0 +1,37 @@
+.container-div{
+    width: 80vw;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+    height: 80vh;
+}
+
+.form-div{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    background-color: skyblue;
+    height: 100%;
+}
+
+.img-div{
+    width: 50%;
+}
+
+input{
+    width: 30rem;
+    height: 3.5rem;
+    border-radius: 25px;
+    outline: 0;
+    border: 5px solid salmon;
+}
+
+button{
+    position: relative;
+    left: 40%;
+    width: 10rem;
+}

@@ -15,35 +15,7 @@
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
-
-    <style>
-        img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .img-div {
-            margin: auto;
-            width: 25%;
-            height: 300px;
-        }
-
-        .left-div {
-            border: 3px solid black;
-            position: relative;
-            width: 100%;
-        }
-
-        .right-div {
-            position: relative;
-            width: 30%;
-        }
-
-        .main-div {
-            display: flex;
-            flex-direction: row;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/home.css">
 
 </head>
 
@@ -93,21 +65,48 @@
                                                             <% } %>
                                                         </div>
 
-                                                        <!-- <div class="right-div">
-                            <section class="">
-                            </section>
-                        </div> -->
-
                                                     </div>
-                                                    <% } %>
+                                                    <% } else {%>
+                                                        <div style="margin: auto; width: 50%; margin-top: 1rem; padding: 1rem;">
+                                                            <img class="disp-img" src="https://hips.hearstapps.com/bpc.h-cdn.co/assets/17/08/1487711891-lego-toy-sets.jpg" alt="" style="height: 100%; width: 100%;" >
+                                                        </div>
+                                                        <h1 class="heading">Our
+                                                            BestSellers
+                                                        </h1>
+                                                        <div class="disp-div" style="height: auto; width: auto; display: flex; margin: 1rem; flex-wrap: wrap; gap: 1.5rem 1.5rem; padding: 2rem;">
 
-                                                        <%- include('footer'); %>
+                                                                
+                                                                    <img src="https://static2.mumzworld.com/media/catalog/product/e/s/ess-sn003-essen-fidget-toys-set-30pc-1618519716.jpg"
+                                                                    class="img-size img-hover" alt=""
+                                                                    style="display:inline; position: relative; height: 80%; width: 30%;">
+                                                                
+                                                                    <img src="https://4.imimg.com/data4/UV/ET/MY-10683197/toy-kitchen-set-500x500.jpg"
+                                                                        class="img-size img-hover" alt=""
+                                                                        style="display:inline; position: relative; height: 80%; width: 30%;">
+                                                                    <img src="https://4.imimg.com/data4/UV/ET/MY-10683197/toy-kitchen-set-500x500.jpg"
+                                                                        class="img-size img-hover" alt=""
+                                                                        style="display:inline; position: relative; height: 80%; width: 30%;">
+                                                                    <img src="https://4.imimg.com/data4/UV/ET/MY-10683197/toy-kitchen-set-500x500.jpg"
+                                                                        class="img-size img-hover" alt=""
+                                                                        style="display:inline; position: relative; height: 80%; width: 30%;">
+                                                                    <img src="https://4.imimg.com/data4/UV/ET/MY-10683197/toy-kitchen-set-500x500.jpg"
+                                                                        class="img-size img-hover" alt=""
+                                                                        style="display:inline; position: relative; height: 80%; width: 30%;">
+                                                                    <img src="https://4.imimg.com/data4/UV/ET/MY-10683197/toy-kitchen-set-500x500.jpg"
+                                                                        class="img-size img-hover" alt=""
+                                                                        style="display:inline; position: relative; height: 80%; width: 30%;">
+                                                               
+
+                                                        </div>
+                                                        <% } %>
+                                                            <!-- <%- include('footer'); %> -->
 
                                                             <!-- JavaScript Bundle with Popper -->
                                                             <script
                                                                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
                                                                 integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-                                                                crossorigin="anonymous"></script>
+                                                                crossorigin="anonymous">
+                                                                </script>
 </body>
 
 </html>
